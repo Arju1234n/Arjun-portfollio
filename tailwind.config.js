@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -82,6 +83,7 @@ export default {
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
+        'fade-in-up': 'fadeInUp 0.8s ease-out',
         'slide-up': 'slideUp 0.8s ease-out',
         'slide-down': 'slideDown 0.8s ease-out',
         'slide-left': 'slideLeft 0.8s ease-out',
@@ -99,11 +101,16 @@ export default {
         'rainbow': 'rainbow 3s linear infinite',
         'shimmer': 'shimmer 2.5s infinite',
         'morph': 'morph 8s ease-in-out infinite',
+        'wave': 'wave 2.5s infinite',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        fadeInUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
         },
         slideUp: {
           '0%': { transform: 'translateY(30px)', opacity: '0' },
@@ -196,6 +203,16 @@ export default {
           '50%': {
             borderRadius: '30% 60% 70% 40%/50% 60% 30% 60%',
           },
+        },
+        wave: {
+          '0%': { transform: 'rotate(0deg)' },
+          '10%': { transform: 'rotate(14deg)' },
+          '20%': { transform: 'rotate(-8deg)' },
+          '30%': { transform: 'rotate(14deg)' },
+          '40%': { transform: 'rotate(-4deg)' },
+          '50%': { transform: 'rotate(10deg)' },
+          '60%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(0deg)' },
         },
       },
       backgroundImage: {

@@ -1,60 +1,28 @@
-import React from 'react';
-import { GraduationCap, Award, Calendar, MapPin, Star, Trophy, Zap, BookOpen } from 'lucide-react';
 
-const Education = () => {
+import React from 'react';
+import Reveal from './Reveal';
+import { GraduationCap, Calendar, MapPin, Trophy, BookOpen } from 'lucide-react';
+
+const Education: React.FC = () => {
   const education = [
     {
       degree: "Bachelor of Technology in Computer Science",
-      institution: "Govt Engineering college Bhojpur              ",
-      location: "patna, India",
+      institution: "Govt Engineering college Bhojpur",
+      location: "Bhojpur, India",
       period: "2023 - 2027",
-      gpa: "8.5/10",
       description: "Comprehensive study of computer science fundamentals including algorithms, data structures, software engineering, and computer systems.",
       achievements: [
-        "Dean's List for Academic Excellence",
-        "Winner of Inter-College Programming Contest",
-        "Research project on Machine Learning algorithms"
+        "Web Development Lead",
+        "Active member of Coding Club",
+        "Participated in various coding competitions"
       ],
       relevantCourses: [
         "Data Structures & Algorithms",
         "Database Management Systems",
         "Software Engineering",
-        "Computer Networks",
-        "Operating Systems",
-        "Machine Learning"
+        "MERN Stack Development",
       ],
       color: "from-purple-500 to-pink-500"
-    }
-  ];
-
-  const certifications = [
-    {
-      name: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      date: "2023",
-      icon: "🏆",
-      color: "from-orange-400 to-red-400"
-    },
-    {
-      name: "Google Cloud Professional Developer",
-      issuer: "Google Cloud",
-      date: "2022",
-      icon: "🏆",
-      color: "from-blue-400 to-cyan-400"
-    },
-    {
-      name: "Certified Kubernetes Administrator",
-      issuer: "Cloud Native Computing Foundation",
-      date: "2022",
-      icon: "🏆",
-      color: "from-green-400 to-emerald-400"
-    },
-    {
-      name: "MongoDB Certified Developer",
-      issuer: "MongoDB Inc.",
-      date: "2021",
-      icon: "🏆",
-      color: "from-purple-400 to-pink-400"
     }
   ];
 
@@ -77,23 +45,21 @@ const Education = () => {
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-shimmer">
-                Education & Certifications
+                Education
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-6 rounded-full animate-shimmer"></div>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Academic foundation and continuous learning through 
-              <span className="text-purple-600 font-semibold"> professional certifications</span>.
+              My academic foundation and journey in computer science.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <div className="grid lg:grid-cols-1 gap-12 mb-16">
             {education.map((edu, index) => (
-              <div 
-                key={index} 
-                className="group relative overflow-hidden bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-purple-100 animate-slide-up"
-                style={{ animationDelay: `${index * 0.3}s` }}
-              >
+              <Reveal key={index}>
+                <div 
+                  className="group relative overflow-hidden bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-purple-100"
+                >
                 {/* Hover Effect Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${edu.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
                 
@@ -117,10 +83,6 @@ const Education = () => {
                   <div className="flex items-center">
                     <MapPin size={14} className="mr-1 animate-bounce" />
                     <span>{edu.location}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Award size={14} className="mr-1 text-yellow-500 animate-pulse" />
-                    <span className="font-semibold">GPA: {edu.gpa}</span>
                   </div>
                 </div>
 
@@ -166,40 +128,8 @@ const Education = () => {
                 {/* Animated Border */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${edu.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 animate-shimmer`}></div>
               </div>
+              </Reveal>
             ))}
-          </div>
-
-          <div className="animate-slide-up">
-            <h3 className="text-3xl font-bold text-center mb-8">
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent flex items-center justify-center">
-                <Zap size={32} className="mr-3 text-yellow-500 animate-bounce" />
-                Professional Certifications
-              </span>
-            </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {certifications.map((cert, index) => (
-                <div 
-                  key={index} 
-                  className="group relative overflow-hidden bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 border border-purple-100 animate-scale-in"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  {/* Hover Effect Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-4xl mb-3 animate-bounce">{cert.icon}</div>
-                    <h4 className="font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
-                      {cert.name}
-                    </h4>
-                    <p className="text-purple-600 font-medium mb-1 animate-pulse">{cert.issuer}</p>
-                    <p className="text-gray-500 text-sm">{cert.date}</p>
-                  </div>
-
-                  {/* Animated Border */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${cert.color} opacity-0 group-hover:opacity-30 transition-opacity duration-500 animate-shimmer`}></div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
@@ -208,3 +138,4 @@ const Education = () => {
 };
 
 export default Education;
+

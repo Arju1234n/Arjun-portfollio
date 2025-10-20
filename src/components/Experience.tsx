@@ -1,8 +1,33 @@
-import React from 'react';
-import { Calendar, MapPin, ExternalLink, Zap, Star, Trophy } from 'lucide-react';
+import Reveal from './Reveal';
+import { Calendar, MapPin, ExternalLink, Zap, Trophy } from 'lucide-react';
 
 const Experience = () => {
-  const experiences = [];
+  const experiences = [
+    {
+      title: "MERN Stack Training",
+      company: "Centre for Development of Advanced Computing (CDAC) Patna",
+      location: "India",
+      period: "June 2025 – July 2025",
+      description: "Completed professional training in MERN Stack (MongoDB, Express.js, React.js, Node.js).",
+      achievements: [
+        "Worked in a team to develop a Hospital Management System as a capstone project",
+        "Designed and implemented frontend using React and backend APIs with Node.js and Express",
+        "Integrated MongoDB for managing patient, doctor, and appointment data efficiently",
+        "Implemented features like user authentication, dashboard, and appointment scheduling",
+        "Gained practical experience in RESTful API design, Git collaboration, and deployment workflow"
+      ],
+      skills: [
+        "MongoDB",
+        "Express.js",
+        "React.js",
+        "Node.js",
+        "RESTful API",
+        "Git",
+        "Hospital Management System"
+      ],
+      color: "from-blue-500 to-cyan-500"
+    }
+  ];
 
   return (
     <section id="experience" className="py-20 relative overflow-hidden">
@@ -32,12 +57,8 @@ const Experience = () => {
               <span className="text-pink-300 font-semibold"> innovative projects</span>.
             </p>
             <p className="text-xl text-purple-200 mb-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              2nd Year CSE Student, Government Engineering College Bhojpur
+              
             </p>
-          </div>
-
-          <div className="flex justify-center mb-6">
-            <img src="/mu.jpg" alt="Muskan Bharti" className="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white" />
           </div>
 
           <div className="relative">
@@ -49,10 +70,10 @@ const Experience = () => {
             )}
 
             {/* Animated Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-blue-500 animate-shimmer"></div>
+            {experiences.length > 0 && <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-blue-500 animate-shimmer"></div>}
 
             {experiences.map((exp, index) => (
-              <div key={index} className="relative mb-12 last:mb-0 animate-slide-up" style={{ animationDelay: `${index * 0.3}s` }}>
+              <Reveal key={index} className="relative mb-12 last:mb-0">
                 {/* Animated Timeline dot */}
                 <div className="absolute left-6 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-white shadow-lg animate-pulse"></div>
                 
@@ -110,7 +131,7 @@ const Experience = () => {
                         Technologies Used:
                       </h4>
                       <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, i) => (
+                        {exp.skills.map((tech, i) => (
                           <span 
                             key={i} 
                             className={`bg-gradient-to-r ${exp.color} text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-xl cursor-pointer animate-float`}
@@ -126,7 +147,7 @@ const Experience = () => {
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-0 group-hover:opacity-30 transition-opacity duration-500 animate-shimmer"></div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -136,3 +157,4 @@ const Experience = () => {
 };
 
 export default Experience;
+
