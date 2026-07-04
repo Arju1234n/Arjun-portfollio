@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+/* ── CSS Custom Properties ── */
+:root {
+  --bg:         #0a0a0a;
+  --bg-1:       #111111;
+  --bg-2:       #1a1a1a;
+  --bg-3:       #222222;
+  --border:     #2a2a2a;
+  --border-2:   #333333;
+  --text-1:     #ffffff;
+  --text-2:     #a1a1aa;
+  --text-3:     #71717a;
+  --accent:     #8b5cf6;
+  --accent-2:   #a78bfa;
+  --accent-bg:  rgba(139,92,246,0.12);
+  --accent-border: rgba(139,92,246,0.3);
+  --red:        #ef4444;
+  --green:      #22c55e;
+  --amber:      #f59e0b;
+  --blue:       #3b82f6;
+  --radius:     8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.5);
+  --shadow:     0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.6);
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+}
+
+/* Light mode */
+.light {
+  --bg:      #f8f8f8;
+  --bg-1:    #ffffff;
+  --bg-2:    #f4f4f5;
+  --bg-3:    #e4e4e7;
+  --border:  #e4e4e7;
+  --border-2:#d4d4d8;
+  --text-1:  #09090b;
+  --text-2:  #52525b;
+  --text-3:  #71717a;
+  --accent-bg: rgba(139,92,246,0.08);
+  --accent-border: rgba(139,92,246,0.2);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow:    0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* ── Selection ── */
+::selection { background: rgba(139,92,246,0.25); color: var(--text-1); }
+
+/* ── Focus ── */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* ── Transitions ── */
+a, button { transition: all 0.15s ease; }
+
+/* ── Glass card ── */
+.glass {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.glass-sm {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Recharts dark overrides ── */
+.recharts-cartesian-grid line { stroke: var(--border) !important; }
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: var(--bg-2) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--text-1) !important;
+  box-shadow: var(--shadow) !important;
+}
+.recharts-text { fill: var(--text-3) !important; }
+
+/* ── TipTap editor ── */
+.ProseMirror {
+  min-height: 200px;
+  padding: 1rem;
+  outline: none;
+  color: var(--text-1);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--text-3);
+  pointer-events: none;
+  height: 0;
+}
+.ProseMirror h1, .ProseMirror h2, .ProseMirror h3 { color: var(--text-1); margin: 1rem 0 0.5rem; font-weight: 700; }
+.ProseMirror h1 { font-size: 1.75rem; }
+.ProseMirror h2 { font-size: 1.4rem; }
+.ProseMirror h3 { font-size: 1.15rem; }
+.ProseMirror ul, .ProseMirror ol { padding-left: 1.5rem; }
+.ProseMirror li { margin: 0.25rem 0; }
+.ProseMirror code { background: var(--bg-3); border-radius: 4px; padding: 2px 6px; font-family: var(--font-mono); font-size: 0.85em; }
+.ProseMirror pre { background: var(--bg-3); border-radius: var(--radius); padding: 1rem; overflow-x: auto; }
+.ProseMirror blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--text-2); }
+.ProseMirror a { color: var(--accent-2); text-decoration: underline; }
+.ProseMirror strong { color: var(--text-1); font-weight: 600; }
+
+/* ── Animations ── */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.animate-fade-in { animation: fadeIn 0.2s ease forwards; }
+.animate-slide-in { animation: slideIn 0.25s ease forwards; }
+
+/* ── Skeleton ── */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--radius);
+}
+@keyframes skeleton-loading {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Number input no spinners ── */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
